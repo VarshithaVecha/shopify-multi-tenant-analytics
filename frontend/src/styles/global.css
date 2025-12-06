@@ -1,0 +1,200 @@
+/* src/styles/global.css */
+
+/* Background & font */
+body {
+  background-image: url("https://img.freepik.com/free-photo/black-friday-sales-sign-neon-light_23-2151833076.jpg?semt=ais_hybrid&w=740&q=80");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: "Poppins", sans-serif;
+}
+
+/* NAVBAR */
+.navbar {
+  padding: 12px;
+  backdrop-filter: blur(12px);
+  background: linear-gradient(90deg, #000000, #3792dd);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -0.5px;
+}
+
+.nav-link {
+  font-size: 16px;
+  padding: 8px 15px !important;
+  border-radius: 6px;
+  color: white !important;
+}
+
+.nav-link:hover {
+  transform: scale(1.08);
+  transition: 0.2s;
+}
+
+/* TABLES */
+.table {
+  background: transparent !important;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.table.glass-table {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.table.glass-table th {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: #000 !important;
+  border: none;
+}
+
+.table.glass-table td {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: white !important;
+  border: none !important;
+}
+
+.table.glass-table tr:hover td {
+  background: rgba(255, 255, 255, 0.12) !important;
+  transition: 0.3s ease-in-out;
+}
+
+.table thead th {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: white !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.table tbody tr {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: white !important;
+  backdrop-filter: blur(6px);
+  transition: 0.2s ease-in-out;
+}
+
+.table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  transform: scale(1.01);
+}
+
+.table td,
+.table th {
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* INPUTS */
+.glass-input {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  color: white !important;
+}
+
+.glass-input::placeholder {
+  color: white;
+}
+
+/* BUTTONS */
+.btn-primary {
+  background: linear-gradient(90deg, #121313, #00b4ff);
+  border: none;
+  transition: 0.25s;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #aeddf1;
+}
+
+.btn-danger:hover {
+  transform: scale(1.08);
+}
+
+.btn-outline-light {
+  border-radius: 8px !important;
+}
+
+/* FORM CONTROLS */
+.form-control,
+.form-select {
+  padding: 10px !important;
+  border-radius: 8px !important;
+}
+
+/* MODAL */
+.modal-content {
+  animation: popup 0.3s ease;
+  border-radius: 12px !important;
+}
+
+@keyframes popup {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* LIST GROUP (Top customers) */
+.list-group-item {
+  background: rgba(255, 255, 255, 0.4) !important;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  margin-bottom: 6px;
+  border-radius: 10px;
+}
+
+/* DASHBOARD STATS CARDS */
+.stats-card {
+  background: rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  transition: 0.3s;
+  border: none;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.stats-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* GLASS CARD WRAPPER */
+.glass-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: transform 0.25s ease, box-shadow 0.25s;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+}
+
+/* Chart wrapper (optional) */
+.chart-wrapper {
+  padding: 20px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
