@@ -31,7 +31,7 @@ app.use("/api", orderRoutes);
 app.use("/api", metricsRoutes);
 
 // Sync DB
-sequelize.sync().then(() => {
+sequelize.sync({force : true}).then(() => {
   console.log("DB synced");
 });
 
