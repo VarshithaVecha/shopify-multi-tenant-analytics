@@ -3,6 +3,8 @@ const cors = require("cors");
 require("dotenv").config();
 const sequelize = require("./config/db");
 
+
+
 // import models
 require("./models/Tenant");
 require("./models/Customer");
@@ -18,7 +20,17 @@ const orderRoutes = require("./routes/orderRoutes");
 const metricsRoutes = require("./routes/metricsRoutes");
 
 const app = express();
-app.use(cors());
+
+app.use(cors({
+  origin: [
+    "http://localhost:3000",
+    "https://shopify-multi-tenant-analytics-eight.vercel.app"
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+}));
+
 app.use(express.json());
 
 // Public routes
@@ -36,7 +48,7 @@ app.get("/", (req, res) => {
 });
 
 // Sync DB (force resets table)
-sequelize.sync({ force: true })
+sequelize.sync()
   .then(() => console.log("Database synced"))
   .catch(err => console.log("DB Error:", err));
 

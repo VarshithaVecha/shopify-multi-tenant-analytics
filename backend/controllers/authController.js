@@ -1,6 +1,8 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const Tenant = require("../models/Tenant");
+const Product = require("../models/Product");  
+const Customer = require("../models/Customer");
 
 exports.registerTenant = async (req, res) => {
   const { shopifyStore, email, password } = req.body;

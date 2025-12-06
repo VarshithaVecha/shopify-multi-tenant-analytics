@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import api from '../services/api';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import api from "../services/api";
+import { useParams } from "react-router-dom";
 
 export default function Products() {
   const { tenantId } = useParams();
@@ -22,6 +22,22 @@ export default function Products() {
   return (
     <div className="container glass-card text-white">
       <h3 className="mb-3">Products</h3>
+      <button
+        className="btn btn-primary mb-3"
+        onClick={async () => {
+          try {
+            await api.post(`/${tenantId}/products/dummy`);
+            alert("Dummy products added!");
+            window.location.reload();
+          } catch (err) {
+            console.error(err);
+            alert("Failed to add dummy products");
+          }
+        }}
+      >
+        Create Dummy Products
+      </button>
+
       <table className="table table-hover table-striped table-bordered shadow-sm glass-table">
         <thead className="table-dark">
           <tr>
@@ -35,7 +51,7 @@ export default function Products() {
             <tr key={p.id || p.shopifyId}>
               <td>{i + 1}</td>
               <td>{p.title}</td>
-              <td>${p.price ?? (p.variants?.[0]?.price ?? '—')}</td>
+              <td>${p.price ?? p.variants?.[0]?.price ?? "—"}</td>
             </tr>
           ))}
         </tbody>

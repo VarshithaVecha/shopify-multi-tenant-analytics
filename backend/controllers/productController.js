@@ -14,8 +14,18 @@ exports.getProducts = async (req, res) => {
   }
 };
 
-// simple sync function if needed can be kept/modified
-exports.syncProducts = async (req, res) => {
-  // optional: use existing implementation but ensure tenant checks
-  res.json({ message: "syncProducts not implemented in this file (optional)" });
+exports.createDummyProducts = async (req, res) => {
+  try {
+    const tenantId = req.tenant.id;
+
+    await Product.bulkCreate([
+      { tenantId, title: "T-Shirt", price: 499 },
+      { tenantId, title: "Jeans", price: 899 },
+      { tenantId, title: "Shoes", price: 1299 }
+    ]);
+
+    res.json({ message: "Dummy products created!" });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 };

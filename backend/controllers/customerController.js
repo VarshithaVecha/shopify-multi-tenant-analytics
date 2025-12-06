@@ -15,8 +15,19 @@ exports.getCustomers = async (req, res) => {
     res.status(500).json({ error: "Failed to fetch customers" });
   }
 };
+exports.createDummyCustomers = async (req, res) => {
+  try {
+    const tenantId = req.tenant.id;
 
-exports.syncCustomers = async (req, res) => {
-  // keep your sync implementation; ensure tenant check
-  res.json({ message: "syncCustomers route (use existing function with tenant checks)" });
+    await Customer.bulkCreate([
+      { tenantId, firstName: "John", lastName: "Doe", email: "john@example.com" },
+      { tenantId, firstName: "Alice", lastName: "Smith", email: "alice@example.com" },
+      { tenantId, firstName: "Sam", lastName: "Lee", email: "sam@example.com" }
+    ]);
+
+    res.json({ message: "Dummy customers created!" });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 };
+
