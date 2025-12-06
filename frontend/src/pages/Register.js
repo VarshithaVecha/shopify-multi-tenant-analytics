@@ -16,7 +16,7 @@ export default function Register() {
       nav('/login');
     } catch (err) {
       console.error(err.response?.data);
-      alert(err.response?.data?.error || 'Registration failed');
+      alert(err.response?.data || 'Registration failed');
     }
   };
 
