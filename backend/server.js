@@ -21,22 +21,27 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Public (no auth)
+// Public routes
 app.use("/api/auth", authRoutes);
 
-// Protected routes handled INSIDE each route file
+// Protected routes
 app.use("/api", customerRoutes);
 app.use("/api", productRoutes);
 app.use("/api", orderRoutes);
 app.use("/api", metricsRoutes);
 
-// Sync DB
-sequelize.sync({force : true}).then(() => {
-  console.log("DB synced");
+// Root check
+app.get("/", (req, res) => {
+  res.send("Backend Running");
 });
 
+// Sync DB (force resets table)
+sequelize.sync({ force: true })
+  .then(() => console.log("Database synced"))
+  .catch(err => console.log("DB Error:", err));
+
 // Start server
-const PORT = process.env.PORT || 4000;
-app.listen(PORT, () =>
-  console.log(`Server running on http://localhost:${PORT}`)
-);
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
