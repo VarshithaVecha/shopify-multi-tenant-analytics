@@ -3,8 +3,6 @@ const cors = require("cors");
 require("dotenv").config();
 const sequelize = require("./config/db");
 
-
-
 // import models
 require("./models/Tenant");
 require("./models/Customer");
